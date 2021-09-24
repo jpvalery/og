@@ -38,7 +38,7 @@ function getCss(theme: string, fontSize: string) {
 
   let fontFamily = "Inter";
 
-  if (theme === "dotphoto") {
+  if (theme === "dotphoto" || theme === "dotclub") {
     fontFamily = "Merriweather";
   }
 
