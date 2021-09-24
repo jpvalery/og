@@ -22,12 +22,10 @@ function getCss(theme: string, fontSize: string) {
         foreground = '#e88b6a';
     }
 
-    let fontRegular = rglr;
-    let fontBold = bold;
+    let fontFamily = 'Inter';
 
     if (theme === 'dotphoto') {
-        fontRegular = srfrglr;
-        fontRegular = srfbold;
+        fontFamily = 'Merriweather'
     }
 
     return `
@@ -35,14 +33,28 @@ function getCss(theme: string, fontSize: string) {
         font-family: 'Inter';
         font-style:  normal;
         font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${fontRegular}) format('woff2');
+        src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
     }
 
     @font-face {
         font-family: 'Inter';
         font-style:  normal;
         font-weight: bold;
-        src: url(data:font/woff2;charset=utf-8;base64,${fontBold}) format('woff2');
+        src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Merriweather';
+        font-style:  normal;
+        font-weight: normal;
+        src: url(data:font/woff2;charset=utf-8;base64,${srfrglr}) format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Merriweather';
+        font-style:  normal;
+        font-weight: bold;
+        src: url(data:font/woff2;charset=utf-8;base64,${srfbold}) format('woff2');
     }
 
     @font-face {
@@ -102,6 +114,7 @@ function getCss(theme: string, fontSize: string) {
     }
     
     .heading {
+        font-family: ${fontFamily};
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
         color: ${foreground};
