@@ -10,6 +10,8 @@ const emojify = (text: string) => twemoji.parse(text, twOptions);
 const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
 const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
 const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
+const srfrglr = readFileSync(`${__dirname}/../_fonts/Merriweather-Regular.woff2`).toString('base64');
+const srfbold = readFileSync(`${__dirname}/../_fonts/Merriweather-Bold.woff2`).toString('base64');
 
 function getCss(theme: string, fontSize: string) {
     let background = '#111827';
@@ -19,19 +21,28 @@ function getCss(theme: string, fontSize: string) {
         background = '#16161d';
         foreground = '#e88b6a';
     }
+
+    let fontRegular = rglr;
+    let fontBold = bold;
+
+    if (theme === 'dotphoto') {
+        fontRegular = srfrglr;
+        fontRegular = srfbold;
+    }
+
     return `
     @font-face {
         font-family: 'Inter';
         font-style:  normal;
         font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
+        src: url(data:font/woff2;charset=utf-8;base64,${fontRegular}) format('woff2');
     }
 
     @font-face {
         font-family: 'Inter';
         font-style:  normal;
         font-weight: bold;
-        src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
+        src: url(data:font/woff2;charset=utf-8;base64,${fontBold}) format('woff2');
     }
 
     @font-face {
@@ -91,7 +102,6 @@ function getCss(theme: string, fontSize: string) {
     }
     
     .heading {
-        font-family: 'Inter', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
         color: ${foreground};
