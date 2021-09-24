@@ -146,7 +146,7 @@ const imageDotmeOptions: DropdownOption[] = [
 ];
 
 const imageDotphotoOptions: DropdownOption[] = [
-    { text: 'Camera', value: 'https://og.jpvalery.me/static/camera.svg' }
+    { text: 'Camera', value: 'https://og.jpvalery.me/static/camera.svg' },
     { text: 'Raccoon', value: 'https://og.jpvalery.me/static/raccoon.svg' },
 ];
 
