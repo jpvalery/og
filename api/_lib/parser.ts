@@ -29,7 +29,7 @@ export function parseRequest(req: IncomingMessage) {
     const parsedRequest: ParsedRequest = {
         fileType: extension === 'jpeg' ? extension : 'png',
         text: decodeURIComponent(text),
-        theme: theme === 'dark' ? 'dark' : 'light',
+        theme: theme === 'dotphoto' ? 'dotphoto' : 'dotme',
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
         images: getArray(images),
@@ -51,7 +51,7 @@ function getArray(stringOrArray: string[] | string | undefined): string[] {
 }
 
 function getDefaultImages(images: string[], theme: Theme): string[] {
-    const defaultImage = theme === 'light'
+    const defaultImage = theme === 'dotme'
         ? 'https://og.jpvalery.me/static/raccoon.svg'
         : 'https://og.jpvalery.me/static/raccoon.svg';
 
