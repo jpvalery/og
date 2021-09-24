@@ -53,7 +53,7 @@ function getArray(stringOrArray: string[] | string | undefined): string[] {
 function getDefaultImages(images: string[], theme: Theme): string[] {
     const defaultImage = theme === 'dotme'
         ? 'https://og.jpvalery.me/static/raccoon.svg'
-        : 'https://og.jpvalery.me/static/raccoon.svg';
+        : 'https://og.jpvalery.me/static/camera.svg';
 
     if (!images || !images[0]) {
         return [defaultImage];
