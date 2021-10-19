@@ -128,9 +128,8 @@ const Toast = ({ show, message }: ToastProps) => {
 };
 
 const themeOptions: DropdownOption[] = [
-  { text: ".me", value: "dotme" },
-  { text: ".photo", value: "dotphoto" },
-  { text: ".club", value: "dotclub" },
+  { text: "Light", value: "light" },
+  { text: "Dark", value: "dark" },
 ];
 
 const fileTypeOptions: DropdownOption[] = [
@@ -148,18 +147,9 @@ const markdownOptions: DropdownOption[] = [
   { text: "Markdown", value: "1" },
 ];
 
-const imageDotmeOptions: DropdownOption[] = [
-  { text: "Raccoon", value: "https://og.jpvalery.me/static/raccoon.svg" },
-];
 
-const imageDotphotoOptions: DropdownOption[] = [
-  { text: "Camera", value: "https://og.jpvalery.me/static/camera.svg" },
-  { text: "Raccoon", value: "https://og.jpvalery.me/static/raccoon.svg" },
-];
-
-const imageDotclubOptions: DropdownOption[] = [
-  { text: "Logo", value: "https://og.jpvalery.me/static/mtlphotoclub.svg" },
-  { text: "Camera", value: "https://og.jpvalery.me/static/camera.svg" },
+const imageOptions: DropdownOption[] = [
+  { text: "Wave", value: "https://og-cio.vercel.app/static/illustration/wave.png" },
 ];
 
 const widthOptions = [
@@ -214,7 +204,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     theme = "dotme",
     md = true,
     text = "**Hello** World",
-    images = [imageDotmeOptions[0].value],
+    images = [imageOptions[0].value],
     widths = [],
     heights = [],
     showToast = false,
@@ -224,14 +214,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     overrideUrl = null,
   } = state;
   const mdValue = md ? "1" : "0";
-  const imageOptions =
-    theme === "dotme"
-      ? imageDotmeOptions
-      : theme === "dotphoto"
-      ? imageDotphotoOptions
-      : theme === "dotclub"
-      ? imageDotclubOptions
-      : imageDotmeOptions;
+
   const url = new URL(window.location.origin);
   url.pathname = `${encodeURIComponent(text)}.${fileType}`;
   url.searchParams.append("theme", theme);
@@ -261,8 +244,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
             options: themeOptions,
             value: theme,
             onchange: (val: Theme) => {
-              const options =
-                val === "dotme" ? imageDotmeOptions : imageDotphotoOptions;
+              const options = imageOptions;
               let clone = [...images];
               clone[0] = options[selectedImageIndex].value;
               setLoadingState({ theme: val, images: clone });

@@ -1,6 +1,6 @@
 import { IncomingMessage } from "http";
 import { parse } from "url";
-import { ParsedRequest, Theme } from "./types";
+import { ParsedRequest } from "./types";
 
 export function parseRequest(req: IncomingMessage) {
   console.log("HTTP " + req.url);
@@ -30,13 +30,9 @@ export function parseRequest(req: IncomingMessage) {
     fileType: extension === "jpeg" ? extension : "png",
     text: decodeURIComponent(text),
     theme:
-      theme === "dotme"
-        ? "dotme"
-        : theme === "dotphoto"
-        ? "dotphoto"
-        : theme === "dotclub"
-        ? "dotclub"
-        : "dotme",
+      theme === "light"
+        ? "light"
+        : "dark",
     md: md === "1" || md === "true",
     fontSize: fontSize || "96px",
     images: getArray(images),
@@ -44,8 +40,7 @@ export function parseRequest(req: IncomingMessage) {
     heights: getArray(heights),
   };
   parsedRequest.images = getDefaultImages(
-    parsedRequest.images,
-    parsedRequest.theme
+    parsedRequest.images
   );
   return parsedRequest;
 }
@@ -60,15 +55,8 @@ function getArray(stringOrArray: string[] | string | undefined): string[] {
   }
 }
 
-function getDefaultImages(images: string[], theme: Theme): string[] {
-  const defaultImage =
-    theme === "dotme"
-      ? "https://og.jpvalery.me/static/raccoon.svg"
-      : theme === "dotphoto"
-      ? "https://og.jpvalery.me/static/camera.svg"
-      : theme === "dotclub"
-      ? "https://og.jpvalery.me/static/mtlphotoclub.svg"
-      : "dotme";
+function getDefaultImages(images: string[]): string[] {
+  const defaultImage = "https://og-cio.vercel.app/static/illustration/wave.png";
 
   if (!images || !images[0]) {
     return [defaultImage];

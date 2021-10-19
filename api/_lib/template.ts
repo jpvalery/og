@@ -15,32 +15,23 @@ const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString(
 const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString(
   "base64"
 );
-const srfrglr = readFileSync(
-  `${__dirname}/../_fonts/Merriweather-Regular.woff2`
+const poppins = readFileSync(
+  `${__dirname}/../_fonts/Poppins-Regular.woff2`
 ).toString("base64");
-const srfbold = readFileSync(
-  `${__dirname}/../_fonts/Merriweather-Bold.woff2`
+const poppinsbold = readFileSync(
+  `${__dirname}/../_fonts/Poppins-Bold.woff2`
 ).toString("base64");
 
 function getCss(theme: string, fontSize: string) {
-  let background = "#111827";
-  let foreground = "white";
+  let background = "#E5E5E5";
+  let foreground = "#2F326A";
 
-  if (theme === "dotphoto") {
-    background = "#16161d";
-    foreground = "#e88b6a";
+  if (theme === "dark") {
+    background = "#2F326A";
+    foreground = "#FFFFFF";
   }
 
-  if (theme === "dotclub") {
-    background = "white";
-    foreground = "black";
-  }
-
-  let fontFamily = "Inter";
-
-  if (theme === "dotphoto" || theme === "dotclub") {
-    fontFamily = "Merriweather";
-  }
+  let fontFamily = "Poppins";
 
   return `
     @font-face {
@@ -58,17 +49,17 @@ function getCss(theme: string, fontSize: string) {
     }
 
     @font-face {
-        font-family: 'Merriweather';
+        font-family: 'Poppins';
         font-style:  normal;
         font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${srfrglr}) format('woff2');
+        src: url(data:font/woff2;charset=utf-8;base64,${poppins}) format('woff2');
     }
 
     @font-face {
-        font-family: 'Merriweather';
+        font-family: 'Poppins';
         font-style:  normal;
         font-weight: bold;
-        src: url(data:font/woff2;charset=utf-8;base64,${srfbold}) format('woff2');
+        src: url(data:font/woff2;charset=utf-8;base64,${poppinsbold}) format('woff2');
     }
 
     @font-face {
