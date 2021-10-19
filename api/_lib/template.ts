@@ -25,12 +25,10 @@ const poppinsbold = readFileSync(
 function getCss(theme: string, fontSize: string) {
   let background = "#F7F8FA";
   let foreground = "#2F326A";
-  let ciologourl = "/static/logos/color.svg"
 
   if (theme === "dark") {
     background = "#2F326A";
     foreground = "#FFFFFF";
-    ciologourl = "/static/logos/white.svg"
   }
 
   let fontFamily = "Poppins";
@@ -75,6 +73,10 @@ function getCss(theme: string, fontSize: string) {
         background: ${background};
         height: 100vh;
         padding: 10%;
+        display: grid;
+        grid-flow: row;
+        align-items: start;
+        gap: 0;
     }
 
     code {
@@ -86,10 +88,6 @@ function getCss(theme: string, fontSize: string) {
 
     code:before, code:after {
         content: '\`';
-    }
-
-    .logo {
-        margin: 0 75px;
     }
 
     .plus {
@@ -105,21 +103,30 @@ function getCss(theme: string, fontSize: string) {
         vertical-align: -0.1em;
     }
 
+    .logo {
+      margin-right: 75px;
+    }
+
     .content {
       display: grid;
       grid-auto-flow: column;
       align-items: center;
       justify-items: start;
       gap: 0;
+      padding: 0 !important;
+      margin: 0;
+    }
+
+    .brand {
+      display: grid;
+      align-items: start;
+      justify-items: end;
+      padding: 0 !important;
+      margin: 0;
     }
 
     .illustration {
       
-    }
-
-    .cio-logo {
-      background-image: url(${ciologourl});
-      background-repeat:no-repeat;
     }
     
     .heading {
@@ -133,6 +140,9 @@ function getCss(theme: string, fontSize: string) {
 
 export function getHtml(parsedReq: ParsedRequest) {
   const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
+
+  const logoUrl = theme === "light" ? "https://og-cio.vercel.app/static/logos/color.svg" : "https://og-cio.vercel.app/static/logos/white.svg";
+
   return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
@@ -151,12 +161,15 @@ export function getHtml(parsedReq: ParsedRequest) {
                   )
                   .join("")}
             </div>
-            <div class="heading">${emojify(
-              md ? marked(text) : sanitizeHtml(text)
-            )}
-            </div>
+              <div class="heading">${emojify(
+                md ? marked(text) : sanitizeHtml(text)
+              )}
+              </div>
           </div>
-          <div class="cio-logo"></div>
+        </div>
+
+        <div class="brand">
+          <img src=${logoUrl} width="auto" heigh="200" />
         </div>
     </body>
 </html>`;
