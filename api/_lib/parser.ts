@@ -51,16 +51,11 @@ function getArray(stringOrArray: string[] | string | undefined): string[] {
 }
 
 function getDefaultImages(images: string[]): string[] {
-  const defaultImage = "https://og-cio.vercel.app/static/get-started.svg";
+  const defaultImage = "https://og-cio.vercel.app/static/getting-started.svg";
 
   if (!images || !images[0]) {
     return [defaultImage];
   }
-  if (
-    !images[0].startsWith("https://assets.vercel.com/") &&
-    !images[0].startsWith("https://assets.zeit.co/")
-  ) {
-    images[0] = defaultImage;
-  }
+  
   return images;
 }
