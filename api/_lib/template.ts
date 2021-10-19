@@ -23,7 +23,7 @@ const poppinsbold = readFileSync(
 ).toString("base64");
 
 function getCss(theme: string, fontSize: string) {
-  let background = "#E5E5E5";
+  let background = "#F7F8FA";
   let foreground = "#2F326A";
 
   if (theme === "dark") {
