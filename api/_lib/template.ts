@@ -161,10 +161,7 @@ export function getHtml(parsedReq: ParsedRequest) {
       ? "https://og-cio.vercel.app/static/logos/color.svg"
       : "https://og-cio.vercel.app/static/logos/white.svg";
 
-  const bgGrid = 
-    theme === "light"
-      ? `<div class="bg-grid"></div>`
-      : "";
+  const bgGrid = theme === "light" ? `<div class="bg-grid"></div>` : "";
 
   return `<!DOCTYPE html>
 <html>
