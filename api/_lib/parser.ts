@@ -56,6 +56,6 @@ function getDefaultImages(images: string[]): string[] {
   if (!images || !images[0]) {
     return [defaultImage];
   }
-  
+
   return images;
 }

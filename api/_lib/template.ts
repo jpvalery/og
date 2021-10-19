@@ -73,10 +73,14 @@ function getCss(theme: string, fontSize: string) {
         background: ${background};
         height: 100vh;
         padding: 10%;
+    }
+
+    .main {
         display: grid;
         grid-flow: row;
         align-items: start;
         gap: 0;
+        z-index: 9999 !important;
     }
 
     code {
@@ -126,24 +130,41 @@ function getCss(theme: string, fontSize: string) {
       padding: 0 !important;
       margin: 0;
     }
-
-    .illustration {
-      
-    }
     
+    .bg-grid {
+      background-image: url("https://og-cio.vercel.app/static/grid.svg");
+      background-repeat: no-repeat;
+      border-radius: 480px 480px 0 480px;
+      position: absolute;
+      width: 1090px;
+      height: 860px;
+      left: 100px;
+      top: 140px !important;
+      z-index: -1;
+      background-size: 100% 100%;
+    }
+
     .heading {
-        font-family: ${fontFamily};
-        font-size: ${sanitizeHtml(fontSize)};
-        font-style: normal;
-        color: ${foreground};
-        line-height: 1.2;
+      font-family: ${fontFamily};
+      font-size: ${sanitizeHtml(fontSize)};
+      font-style: normal;
+      color: ${foreground};
+      line-height: 1.2;
     }`;
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
   const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
 
-  const logoUrl = theme === "light" ? "https://og-cio.vercel.app/static/logos/color.svg" : "https://og-cio.vercel.app/static/logos/white.svg";
+  const logoUrl =
+    theme === "light"
+      ? "https://og-cio.vercel.app/static/logos/color.svg"
+      : "https://og-cio.vercel.app/static/logos/white.svg";
+
+  const bgGrid = 
+    theme === "light"
+      ? `<div class="bg-grid"></div>`
+      : "";
 
   return `<!DOCTYPE html>
 <html>
@@ -154,8 +175,9 @@ export function getHtml(parsedReq: ParsedRequest) {
         ${getCss(theme, fontSize)}
     </style>
     <body>
+      <div class="main">
         <div class="content">
-            <div class="illustration">
+            <div>
                 ${images
                   .map(
                     (img, i) =>
@@ -163,16 +185,17 @@ export function getHtml(parsedReq: ParsedRequest) {
                   )
                   .join("")}
             </div>
-              <div class="heading">${emojify(
-                md ? marked(text) : sanitizeHtml(text)
-              )}
-              </div>
+            <div class="heading">${emojify(
+              md ? marked(text) : sanitizeHtml(text)
+            )}
+            </div>
           </div>
         </div>
-
         <div class="brand">
           <img src=${logoUrl} width="auto" height="140" />
         </div>
+      </div>
+      ${bgGrid}
     </body>
 </html>`;
 }
