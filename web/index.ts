@@ -201,7 +201,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
   const {
     fileType = "png",
     fontSize = "100px",
-    theme = "dotme",
+    theme = "light",
     md = true,
     text = "**Hello** World",
     images = [imageOptions[0].value],
