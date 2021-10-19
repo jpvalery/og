@@ -147,7 +147,6 @@ const markdownOptions: DropdownOption[] = [
   { text: "Markdown", value: "1" },
 ];
 
-
 const imageOptions: DropdownOption[] = [
   { text: "Wave", value: "https://og-cio.vercel.app/static/wave.svg" },
 ];

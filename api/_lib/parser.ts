@@ -29,19 +29,14 @@ export function parseRequest(req: IncomingMessage) {
   const parsedRequest: ParsedRequest = {
     fileType: extension === "jpeg" ? extension : "png",
     text: decodeURIComponent(text),
-    theme:
-      theme === "light"
-        ? "light"
-        : "dark",
+    theme: theme === "light" ? "light" : "dark",
     md: md === "1" || md === "true",
     fontSize: fontSize || "96px",
     images: getArray(images),
     widths: getArray(widths),
     heights: getArray(heights),
   };
-  parsedRequest.images = getDefaultImages(
-    parsedRequest.images
-  );
+  parsedRequest.images = getDefaultImages(parsedRequest.images);
   return parsedRequest;
 }
 
