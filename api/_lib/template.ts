@@ -171,7 +171,7 @@ export function getHtml(parsedReq: ParsedRequest) {
         </div>
 
         <div class="brand">
-          <img src=${logoUrl} width="auto" height="250" />
+          <img src=${logoUrl} width="auto" height="200" />
         </div>
     </body>
 </html>`;
