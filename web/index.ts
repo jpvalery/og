@@ -202,7 +202,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     fontSize = "100px",
     theme = "light",
     md = true,
-    text = "**Hello** World",
+    text = `Where your title would go`,
     images = [imageOptions[0].value],
     widths = [],
     heights = [],
