@@ -51,7 +51,7 @@ function getArray(stringOrArray: string[] | string | undefined): string[] {
 }
 
 function getDefaultImages(images: string[]): string[] {
-  const defaultImage = "https://og-cio.vercel.app/static/wave.svg";
+  const defaultImage = "https://og-cio.vercel.app/static/get-started.svg";
 
   if (!images || !images[0]) {
     return [defaultImage];

@@ -148,7 +148,20 @@ const markdownOptions: DropdownOption[] = [
 ];
 
 const imageOptions: DropdownOption[] = [
-  { text: "Wave", value: "https://og-cio.vercel.app/static/wave.svg" },
+  { text: "Get Started", value: "https://og-cio.vercel.app/static/get-started.svg" },
+  { text: "Accounts", value: "https://og-cio.vercel.app/static/accounts.svg" },
+{ text: "Our Company", value: "https://og-cio.vercel.app/static/our-company.svg" },
+{ text: "API", value: "https://og-cio.vercel.app/static/api.svg" },
+{ text: "Logos", value: "https://og-cio.vercel.app/static/logos" },
+{ text: "People", value: "https://og-cio.vercel.app/static/people.svg" },
+{ text: "Customer Data", value: "https://og-cio.vercel.app/static/customer-data.svg" },
+{ text: "Messaging", value: "https://og-cio.vercel.app/static/messaging.svg" },
+{ text: "Recipes", value: "https://og-cio.vercel.app/static/recipes.svg" },
+{ text: "Data Integrations", value: "https://og-cio.vercel.app/static/data-integrations.svg" },
+{ text: "Metrics (1)", value: "https://og-cio.vercel.app/static/metrics1.svg" },
+{ text: "Release Notes", value: "https://og-cio.vercel.app/static/release-notes.svg" },
+{ text: "Metrics (2)", value: "https://og-cio.vercel.app/static/metrics2.svg" },
+{ text: "Segmentation", value: "https://og-cio.vercel.app/static/segmentation.svg" },
 ];
 
 const widthOptions = [

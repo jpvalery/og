@@ -108,6 +108,7 @@ function getCss(theme: string, fontSize: string) {
     }
 
     .content {
+      width: 100%;
       display: grid;
       grid-auto-flow: column;
       align-items: center;
@@ -118,6 +119,7 @@ function getCss(theme: string, fontSize: string) {
     }
 
     .brand {
+      width: 100%;
       display: grid;
       align-items: start;
       justify-items: end;
@@ -169,7 +171,7 @@ export function getHtml(parsedReq: ParsedRequest) {
         </div>
 
         <div class="brand">
-          <img src=${logoUrl} width="auto" heigh="200" />
+          <img src=${logoUrl} width="auto" height="250" />
         </div>
     </body>
 </html>`;
