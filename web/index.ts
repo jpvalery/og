@@ -153,24 +153,18 @@ const imageOptions: DropdownOption[] = [
 
 const widthOptions = [
   { text: "width", value: "auto" },
-  { text: "50", value: "50" },
   { text: "100", value: "100" },
-  { text: "150", value: "150" },
   { text: "200", value: "200" },
-  { text: "250", value: "250" },
   { text: "300", value: "300" },
-  { text: "350", value: "350" },
+  { text: "400", value: "400" },
 ];
 
 const heightOptions = [
   { text: "height", value: "auto" },
-  { text: "50", value: "50" },
   { text: "100", value: "100" },
-  { text: "150", value: "150" },
   { text: "200", value: "200" },
-  { text: "250", value: "250" },
   { text: "300", value: "300" },
-  { text: "350", value: "350" },
+  { text: "400", value: "400" },
 ];
 
 interface AppState extends ParsedRequest {
@@ -204,8 +198,8 @@ const App = (_: any, state: AppState, setState: SetState) => {
     md = true,
     text = `Where your title would go`,
     images = [imageOptions[0].value],
-    widths = [],
-    heights = [],
+    widths = ["400"],
+    heights = ["400"],
     showToast = false,
     messageToast = "",
     loading = true,

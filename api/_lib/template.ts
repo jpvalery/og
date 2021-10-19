@@ -25,10 +25,12 @@ const poppinsbold = readFileSync(
 function getCss(theme: string, fontSize: string) {
   let background = "#F7F8FA";
   let foreground = "#2F326A";
+  let ciologourl = "/static/logos/color.svg"
 
   if (theme === "dark") {
     background = "#2F326A";
     foreground = "#FFFFFF";
+    ciologourl = "/static/logos/white.svg"
   }
 
   let fontFamily = "Poppins";
@@ -72,10 +74,7 @@ function getCss(theme: string, fontSize: string) {
     body {
         background: ${background};
         height: 100vh;
-        display: flex;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
+        padding: 10%;
     }
 
     code {
@@ -89,14 +88,6 @@ function getCss(theme: string, fontSize: string) {
         content: '\`';
     }
 
-    .logo-wrapper {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        justify-items: center;
-    }
-
     .logo {
         margin: 0 75px;
     }
@@ -107,15 +98,28 @@ function getCss(theme: string, fontSize: string) {
         font-size: 100px;
     }
 
-    .spacer {
-        margin: 150px;
-    }
-
     .emoji {
         height: 1em;
         width: 1em;
         margin: 0 .05em 0 .1em;
         vertical-align: -0.1em;
+    }
+
+    .content {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-items: start;
+      gap: 0;
+    }
+
+    .illustration {
+      
+    }
+
+    .cio-logo {
+      background-image: url(${ciologourl});
+      background-repeat:no-repeat;
     }
     
     .heading {
@@ -123,7 +127,7 @@ function getCss(theme: string, fontSize: string) {
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
         color: ${foreground};
-        line-height: 1.8;
+        line-height: 1.2;
     }`;
 }
 
@@ -138,9 +142,8 @@ export function getHtml(parsedReq: ParsedRequest) {
         ${getCss(theme, fontSize)}
     </style>
     <body>
-        <div>
-            <div class="spacer">
-            <div class="logo-wrapper">
+        <div class="content">
+            <div class="illustration">
                 ${images
                   .map(
                     (img, i) =>
@@ -148,11 +151,12 @@ export function getHtml(parsedReq: ParsedRequest) {
                   )
                   .join("")}
             </div>
-            <div class="spacer">
             <div class="heading">${emojify(
               md ? marked(text) : sanitizeHtml(text)
             )}
             </div>
+          </div>
+          <div class="cio-logo"></div>
         </div>
     </body>
 </html>`;
