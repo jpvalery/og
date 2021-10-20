@@ -34,12 +34,12 @@ function getCss(theme: string, layout: string, fontSize: string) {
   let fontFamily = "Poppins";
 
   let layoutCss = `
-      .content {
+    .content {
       width: 100%;
       display: grid;
       grid-auto-flow: column;
       align-items: center;
-      justify-items: start;
+      justify-content: flex-start;
       gap: 0;
       padding: 0 !important;
       margin: 0;
