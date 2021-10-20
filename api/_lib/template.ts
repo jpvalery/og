@@ -22,7 +22,7 @@ const poppinsbold = readFileSync(
   `${__dirname}/../_fonts/Poppins-Bold.woff2`
 ).toString("base64");
 
-function getCss(theme: string, fontSize: string) {
+function getCss(theme: string, layout: string, fontSize: string) {
   let background = "#F7F8FA";
   let foreground = "#2F326A";
 
@@ -32,6 +32,92 @@ function getCss(theme: string, fontSize: string) {
   }
 
   let fontFamily = "Poppins";
+
+  let layoutCss = `
+      .content {
+      width: 100%;
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-items: start;
+      gap: 0;
+      padding: 0 !important;
+      margin: 0;
+    }
+
+    .brand {
+      width: 100%;
+      display: grid;
+      align-items: start;
+      justify-items: end;
+      padding: 0 !important;
+      margin: 0;
+    }
+    
+    .bg-grid {
+      background-image: url("https://og-cio.vercel.app/static/grid.svg");
+      background-repeat: no-repeat;
+      border-radius: 480px 480px 0 480px;
+      position: absolute;
+      width: 1090px;
+      height: 860px;
+      left: 100px;
+      top: 140px !important;
+      z-index: -1;
+      background-size: 100% 100%;
+    }
+
+    .logo {
+      margin-right: 75px;
+    }
+  `
+
+  if (layout === "center")
+  {layoutCss = `
+    .content {
+      width: 100%;
+      display: grid;
+      grid-auto-flow: row;
+      align-items: center;
+      justify-items: center;
+      gap: 0;
+      padding: 0 !important;
+      margin: 0;
+    }
+
+    .logo {
+      margin-right: 0 !important;
+    }
+
+    .images {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      gap: 75px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .brand {
+      width: 100%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      padding: 0 !important;
+      margin: 0;
+    }
+    
+    .bg-grid {
+      background-image: url("https://og-cio.vercel.app/static/grid.svg");
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      background-size: 100% 100%;
+    }
+  `}
 
   return `
     @font-face {
@@ -107,42 +193,7 @@ function getCss(theme: string, fontSize: string) {
         vertical-align: -0.1em;
     }
 
-    .logo {
-      margin-right: 75px;
-    }
-
-    .content {
-      width: 100%;
-      display: grid;
-      grid-auto-flow: column;
-      align-items: center;
-      justify-items: start;
-      gap: 0;
-      padding: 0 !important;
-      margin: 0;
-    }
-
-    .brand {
-      width: 100%;
-      display: grid;
-      align-items: start;
-      justify-items: end;
-      padding: 0 !important;
-      margin: 0;
-    }
-    
-    .bg-grid {
-      background-image: url("https://og-cio.vercel.app/static/grid.svg");
-      background-repeat: no-repeat;
-      border-radius: 480px 480px 0 480px;
-      position: absolute;
-      width: 1090px;
-      height: 860px;
-      left: 100px;
-      top: 140px !important;
-      z-index: -1;
-      background-size: 100% 100%;
-    }
+    ${layoutCss}
 
     .heading {
       font-family: ${fontFamily};
@@ -154,7 +205,7 @@ function getCss(theme: string, fontSize: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-  const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
+  const { text, theme, layout, md, fontSize, images, widths, heights } = parsedReq;
 
   const logoUrl =
     theme === "light"
@@ -163,24 +214,35 @@ export function getHtml(parsedReq: ParsedRequest) {
 
   const bgGrid = theme === "light" ? `<div class="bg-grid"></div>` : "";
 
+  const displayedImages = 
+    layout === "center"
+    ? images
+                  .map(
+                    (img, i) =>
+                      getPlusSign(i) + getImage(img, widths[i], heights[i])
+                  )
+                  .join("")
+    : images
+                  .map(
+                    (img, i) =>
+                      getImage(img, widths[i], heights[i])
+                  )
+                  .slice(0, 1)
+                  .join("")
+
   return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
     <title>Generated Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        ${getCss(theme, fontSize)}
+        ${getCss(theme, layout, fontSize)}
     </style>
     <body>
       <div class="main">
         <div class="content">
-            <div>
-                ${images
-                  .map(
-                    (img, i) =>
-                      getPlusSign(i) + getImage(img, widths[i], heights[i])
-                  )
-                  .join("")}
+            <div class="images">
+                  ${displayedImages}
             </div>
             <div class="heading">${emojify(
               md ? marked(text) : sanitizeHtml(text)

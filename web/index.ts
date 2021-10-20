@@ -1,4 +1,4 @@
-import { ParsedRequest, Theme, FileType } from "../api/_lib/types";
+import { ParsedRequest, Theme, Layout, FileType } from "../api/_lib/types";
 const { H, R, copee } = window as any;
 let timeout = -1;
 
@@ -132,6 +132,11 @@ const themeOptions: DropdownOption[] = [
   { text: "Dark", value: "dark" },
 ];
 
+const layoutOptions: DropdownOption[] = [
+  { text: "Left", value: "left" },
+  { text: "Center", value: "center" },
+];
+
 const fileTypeOptions: DropdownOption[] = [
   { text: "PNG", value: "png" },
   { text: "JPEG", value: "jpeg" },
@@ -238,6 +243,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     fileType = "png",
     fontSize = "100px",
     theme = "light",
+    layout = "left",
     md = true,
     text = `Where your title would go`,
     images = [imageOptions[0].value],
@@ -254,6 +260,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
   const url = new URL(window.location.origin);
   url.pathname = `${encodeURIComponent(text)}.${fileType}`;
   url.searchParams.append("theme", theme);
+  url.searchParams.append("layout", layout);
   url.searchParams.append("md", mdValue);
   url.searchParams.append("fontSize", fontSize);
   for (let image of images) {
@@ -284,6 +291,19 @@ const App = (_: any, state: AppState, setState: SetState) => {
               let clone = [...images];
               clone[0] = options[selectedImageIndex].value;
               setLoadingState({ theme: val, images: clone });
+            },
+          }),
+        }),
+        H(Field, {
+          label: "Layout",
+          input: H(Dropdown, {
+            options: layoutOptions,
+            value: layout,
+            onchange: (val: Layout) => {
+              const options = imageOptions;
+              let clone = [...images];
+              clone[0] = options[selectedImageIndex].value;
+              setLoadingState({ layout: val, images: clone });
             },
           }),
         }),
