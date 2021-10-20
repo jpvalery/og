@@ -56,7 +56,7 @@ function getCss(theme: string, layout: string, fontSize: string) {
     
     .bg-grid {
       background-image: url("https://og-cio.vercel.app/static/grid.svg");
-      background-repeat: no-repeat;
+      background-repeat: repeat !important;
       border-radius: 480px 480px 0 480px;
       position: absolute;
       width: 1090px;
@@ -64,7 +64,8 @@ function getCss(theme: string, layout: string, fontSize: string) {
       left: 100px;
       top: 140px !important;
       z-index: -1;
-      background-size: 100% 100%;
+      background-size: 414px 414px;
+      opacity: 0.5;
     }
 
     .logo {
@@ -109,13 +110,15 @@ function getCss(theme: string, layout: string, fontSize: string) {
     
     .bg-grid {
       background-image: url("https://og-cio.vercel.app/static/grid.svg");
+      background-repeat: repeat !important;
       position: absolute;
       width: 100vw;
       height: 100vh;
       left: 0;
       top: 0;
       z-index: -1;
-      background-size: 100% 100%;
+      background-size: 414px 414px;
+      opacity: 0.5;
     }
   `}
 
