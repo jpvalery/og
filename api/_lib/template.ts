@@ -72,10 +72,10 @@ function getCss(theme: string, layout: string, fontSize: string) {
     .logo {
       margin-right: 75px;
     }
-  `
+  `;
 
-  if (layout === "center")
-  {layoutCss = `
+  if (layout === "center") {
+    layoutCss = `
     .content {
       width: 100%;
       display: grid;
@@ -121,7 +121,8 @@ function getCss(theme: string, layout: string, fontSize: string) {
       background-size: 414px 414px;
       opacity: 0.5;
     }
-  `}
+  `;
+  }
 
   return `
     @font-face {
@@ -209,7 +210,8 @@ function getCss(theme: string, layout: string, fontSize: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-  const { text, theme, layout, md, fontSize, images, widths, heights } = parsedReq;
+  const { text, theme, layout, md, fontSize, images, widths, heights } =
+    parsedReq;
 
   const logoUrl =
     theme === "light"
@@ -218,21 +220,17 @@ export function getHtml(parsedReq: ParsedRequest) {
 
   const bgGrid = theme === "light" ? `<div class="bg-grid"></div>` : "";
 
-  const displayedImages = 
+  const displayedImages =
     layout === "center"
-    ? images
-                  .map(
-                    (img, i) =>
-                      getPlusSign(i) + getImage(img, widths[i], heights[i])
-                  )
-                  .join("")
-    : images
-                  .map(
-                    (img, i) =>
-                      getImage(img, widths[i], heights[i])
-                  )
-                  .slice(0, 1)
-                  .join("")
+      ? images
+          .map(
+            (img, i) => getPlusSign(i) + getImage(img, widths[i], heights[i])
+          )
+          .join("")
+      : images
+          .map((img, i) => getImage(img, widths[i], heights[i]))
+          .slice(0, 1)
+          .join("");
 
   return `<!DOCTYPE html>
 <html>

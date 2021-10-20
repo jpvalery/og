@@ -166,7 +166,6 @@ const imageOptions: DropdownOption[] = [
     value: "https://og-cio.vercel.app/static/our-company.svg",
   },
   { text: "API", value: "https://og-cio.vercel.app/static/api.svg" },
-  { text: "Logos", value: "https://og-cio.vercel.app/static/logos" },
   { text: "People", value: "https://og-cio.vercel.app/static/people.svg" },
   {
     text: "Customer Data",
