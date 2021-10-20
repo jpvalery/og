@@ -52,6 +52,7 @@ function getCss(theme: string, layout: string, fontSize: string) {
       justify-items: end;
       padding: 0 !important;
       margin: 0;
+      margin-top: 200px;
     }
     
     .bg-grid {
@@ -168,7 +169,7 @@ function getCss(theme: string, layout: string, fontSize: string) {
         display: grid;
         grid-flow: row;
         align-items: start;
-        gap: 0;
+        gap: 10;
         z-index: 9999 !important;
     }
 
