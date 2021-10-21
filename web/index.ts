@@ -196,6 +196,10 @@ const imageOptions: DropdownOption[] = [
     text: "Segmentation",
     value: "https://og-cio.vercel.app/static/segmentation.svg",
   },
+  {
+    text: "No image",
+    value: "https://og-cio.vercel.app/static/no-image.svg",
+  },
 ];
 
 const widthOptions = [
