@@ -58,12 +58,17 @@ function getCss(theme: string, layout: string, fontSize: string) {
     .bg-grid {
       background-image: url("https://og-cio.vercel.app/static/grid.svg");
       background-repeat: repeat !important;
-      border-radius: 480px 480px 0 480px;
+      clip-path: polygon(
+            0 0, /* left top */
+            100% 0, /* right top */ 
+            50% 50%, /* right bottom */
+            0 100% /* left bottom */
+          );
       position: absolute;
-      width: 1090px;
-      height: 860px;
-      left: 100px;
-      top: 140px !important;
+      width: 54vw;
+      height: 110vh;
+      left: 0;
+      top: 0;
       z-index: -1;
       background-size: 414px 414px;
       opacity: 0.5;
