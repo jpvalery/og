@@ -172,10 +172,17 @@ const imageOptions: DropdownOption[] = [
     value: "https://og-cio.vercel.app/static/customer-data.svg",
   },
   {
-    text: "Messaging",
+    text: "Liquid",
+    value: "https://og-cio.vercel.app/static/customer-data.svg",
+  },
+  {
+    text: "Campaigns and Workflows",
     value: "https://og-cio.vercel.app/static/messaging.svg",
   },
-  { text: "Recipes", value: "https://og-cio.vercel.app/static/recipes.svg" },
+  {
+    text: "Messages and Webhooks",
+    value: "https://og-cio.vercel.app/static/messaging.svg",
+  },
   {
     text: "Integrations",
     value: "https://og-cio.vercel.app/static/integrations.svg",
