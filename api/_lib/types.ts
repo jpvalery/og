@@ -1,5 +1,5 @@
 export type FileType = "png" | "jpeg";
-export type Theme = "dotme" | "dotphoto" | "dotclub";
+export type Theme = "dotme" | "dotphoto" | "dotclub" | "flightlog";
 
 export interface ParsedRequest {
   fileType: FileType;
