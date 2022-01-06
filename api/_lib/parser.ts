@@ -36,6 +36,8 @@ export function parseRequest(req: IncomingMessage) {
         ? "dotphoto"
         : theme === "dotclub"
         ? "dotclub"
+        : theme === "flightlog"
+        ? "flightlog"
         : "dotme",
     md: md === "1" || md === "true",
     fontSize: fontSize || "96px",
@@ -68,16 +70,13 @@ function getDefaultImages(images: string[], theme: Theme): string[] {
       ? "https://og.jpvalery.me/static/camera.svg"
       : theme === "dotclub"
       ? "https://og.jpvalery.me/static/mtlphotoclub.svg"
+      : theme === "flightlog"
+      ? "https://og.jpvalery.me/static/plane.svg"
       : "dotme";
 
   if (!images || !images[0]) {
     return [defaultImage];
   }
-  if (
-    !images[0].startsWith("https://assets.vercel.com/") &&
-    !images[0].startsWith("https://assets.zeit.co/")
-  ) {
-    images[0] = defaultImage;
-  }
+
   return images;
 }

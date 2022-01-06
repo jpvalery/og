@@ -131,6 +131,7 @@ const themeOptions: DropdownOption[] = [
   { text: ".me", value: "dotme" },
   { text: ".photo", value: "dotphoto" },
   { text: ".club", value: "dotclub" },
+    { text: "flightlog", value: "flightlog" },
 ];
 
 const fileTypeOptions: DropdownOption[] = [
@@ -160,6 +161,10 @@ const imageDotphotoOptions: DropdownOption[] = [
 const imageDotclubOptions: DropdownOption[] = [
   { text: "Logo", value: "https://og.jpvalery.me/static/mtlphotoclub.svg" },
   { text: "Camera", value: "https://og.jpvalery.me/static/camera.svg" },
+];
+
+const imageFlightlogOptions: DropdownOption[] = [
+  { text: "Plane", value: "https://og.jpvalery.me/static/plane.svg" },
 ];
 
 const widthOptions = [
@@ -231,6 +236,8 @@ const App = (_: any, state: AppState, setState: SetState) => {
       ? imageDotphotoOptions
       : theme === "dotclub"
       ? imageDotclubOptions
+      : theme === "flightlog"
+      ? imageFlightlogOptions
       : imageDotmeOptions;
   const url = new URL(window.location.origin);
   url.pathname = `${encodeURIComponent(text)}.${fileType}`;

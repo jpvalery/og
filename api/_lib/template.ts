@@ -22,6 +22,10 @@ const srfbold = readFileSync(
   `${__dirname}/../_fonts/Merriweather-Bold.woff2`
 ).toString("base64");
 
+const parkly = readFileSync(`${__dirname}/../_fonts/parklyCondensed.woff2`).toString(
+  "base64"
+);
+
 function getCss(theme: string, fontSize: string) {
   let background = "#111827";
   let foreground = "white";
@@ -36,10 +40,19 @@ function getCss(theme: string, fontSize: string) {
     foreground = "black";
   }
 
+  if (theme === "flightlog") {
+    background = "#f4f4f5";
+    foreground = "#18181B";
+  }
+
   let fontFamily = "Inter";
 
   if (theme === "dotphoto" || theme === "dotclub") {
     fontFamily = "Merriweather";
+  }
+
+  if (theme === "flightlog") {
+    fontFamily = "parklyCondensed";
   }
 
   return `
@@ -76,6 +89,13 @@ function getCss(theme: string, fontSize: string) {
         font-style: normal;
         font-weight: normal;
         src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
+      }
+
+    @font-face {
+        font-family: 'parklyCondensed';
+        font-style: normal;
+        font-weight: normal;
+        src: url(data:font/woff2;charset=utf-8;base64,${parkly})  format("woff2");
       }
 
     body {
