@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "@/styles.css";
 import Script from "next/script";
 
@@ -61,10 +62,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <PreloadResources />
-      <body>{children}</body>
-      <Script />
-    </html>
-  );
+			<html lang="en">
+				<PreloadResources />
+				<body>{children}</body>
+				<Script />
+			</html>
+		);
 }

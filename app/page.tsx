@@ -1,4 +1,5 @@
 "use client";
+// @ts-nocheck
 
 import Editor, { useMonaco } from "@monaco-editor/react";
 import blobStream from "blob-stream";

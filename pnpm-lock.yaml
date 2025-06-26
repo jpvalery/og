@@ -66,9 +66,12 @@ importers:
       '@types/pdfkit':
         specifier: ^0.12.7
         version: 0.12.12
+      '@types/react':
+        specifier: ^18.3.1
+        version: 18.3.23
       '@types/react-dom':
         specifier: ^18.0.6
-        version: 18.3.5(@types/react@18.0.6)
+        version: 18.3.5(@types/react@18.3.23)
       '@types/svg-to-pdfkit':
         specifier: ^0.1.0
         version: 0.1.3
@@ -291,19 +294,16 @@ packages:
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
 
-  '@types/prop-types@15.7.14':
-    resolution: {integrity: sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==}
+  '@types/prop-types@15.7.15':
+    resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
 
   '@types/react-dom@18.3.5':
     resolution: {integrity: sha512-P4t6saawp+b/dFrUr2cvkVsfvPguwsxtH6dNIYRllMsefqFzkZk5UIjzyDOv5g1dXIPdG4Sp1yCR4Z6RCUsG/Q==}
     peerDependencies:
       '@types/react': ^18.0.0
 
-  '@types/react@18.0.6':
-    resolution: {integrity: sha512-bPqwzJRzKtfI0mVYr5R+1o9BOE8UEXefwc1LwcBtfnaAn6OoqMhLa/91VA8aeWfDPJt1kHvYKI8RHcQybZLHHA==}
-
-  '@types/scheduler@0.23.0':
-    resolution: {integrity: sha512-YIoDCTH3Af6XM5VuwGG/QL/CJqga1Zm3NkU3HZ4ZHK2fRMPYP1VczsTUqtsf43PH/iJNVlPHAo2oWX7BSdB2Hw==}
+  '@types/react@18.3.23':
+    resolution: {integrity: sha512-/LDXMQh55EzZQ0uVAZmKKhfENivEvWz6E+EYzh+/MCjMhNsotd+ZHhBGIjFDTi6+fz0OhQQQLbTgdQIxxCsC0w==}
 
   '@types/svg-to-pdfkit@0.1.3':
     resolution: {integrity: sha512-cvCWOllCV7v6K4jWhzaAkWXhMbTlDHFTBorKx0E233xVflRb8wbVFvSyEezSJfIiP+9dWd5YTuiPR2k/dlyNYg==}
@@ -2034,19 +2034,16 @@ snapshots:
 
   '@types/prismjs@1.26.5': {}
 
-  '@types/prop-types@15.7.14': {}
+  '@types/prop-types@15.7.15': {}
 
-  '@types/react-dom@18.3.5(@types/react@18.0.6)':
+  '@types/react-dom@18.3.5(@types/react@18.3.23)':
     dependencies:
-      '@types/react': 18.0.6
+      '@types/react': 18.3.23
 
-  '@types/react@18.0.6':
+  '@types/react@18.3.23':
     dependencies:
-      '@types/prop-types': 15.7.14
-      '@types/scheduler': 0.23.0
+      '@types/prop-types': 15.7.15
       csstype: 3.1.3
-
-  '@types/scheduler@0.23.0': {}
 
   '@types/svg-to-pdfkit@0.1.3':
     dependencies:
